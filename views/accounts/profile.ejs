@@ -1,0 +1,22 @@
+<% layout('layout') %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-2 col-sm-12 profile_data text-center" style="width: 100%;margin-top: 20vh;">
+            <% if(user.lastname == 'undefined') { %>
+                <p>Name : <%= user.firstname%></p>
+            <% } else { %>
+                <p>Name : <%= user.firstname%>&nbsp;<%= user.lastname%></p>
+            <% } %>
+            <p>Date of Birth : <%= user.dob%></p>
+            <p>Age : <%= user.age%></p>
+            <p>Occupation : <%= user.occupation%></p>
+            <p>Age : <%= user.age%></p>
+            <p>District : <%= user.district%></p>
+            <p>City : <%= user.city%></p>
+            <p>State : <%= user.state%></p>
+            <p>Zip Code : <%= user.zip%></p>
+        </div>
+    </div>
+    <br>
+</div>

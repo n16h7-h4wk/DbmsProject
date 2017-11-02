@@ -1,0 +1,65 @@
+<% layout('layout') %>
+
+<link rel="stylesheet" href="/css/people.css">
+<script src="/js/people.js"></script>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <input type="search" class="form-control" id="input-search" placeholder="Search People..." >
+            <hr>
+        </div>
+        <div class="searchable-container">
+            <% for(let i=0;i<people.length;i++) { %>
+            <% if(user) { %>
+            <% if(people[i].user_id != user.id) { %>
+            <div class="items col-xs-12 col-sm-6 col-md-6 col-lg-6 clearfix">
+                <div class="info-block block-info clearfix">
+                    <div class="square-box pull-left">
+                        <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+                    </div>
+
+                    <% if(people[i].lastname == 'undefined') { %>
+                        <h4>Name: <%= people[i].firstname%></h4>
+                    <% } else { %>
+                        <h4>Name: <%= people[i].firstname%>&nbsp;<%= people[i].lastname%></h4>
+                    <% } %>
+                    <p>Date of Birth: <%= people[i].dob%></p>
+                    <p>Age: <%= people[i].age%></p>
+                    <% if(user && !(friends.includes(people[i].user_id) || friendsHelp.includes(people[i].user_id))) { %>
+                    <form method="post">
+                        <input type="hidden" name="user" value="<%= user.id%>">
+                        <input type="hidden" name="profile" value="<%= people[i].user_id%>">
+                        <button type="submit" class="btn btn-success">Send Request</button>
+                    </form>
+                    <% } %>
+                </div>
+            </div>
+            <% } %>
+            <% } else { %>
+            <div class="items col-xs-12 col-sm-6 col-md-6 col-lg-6 clearfix">
+                <div class="info-block block-info clearfix">
+                    <div class="square-box pull-left">
+                        <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+                    </div>
+                    <% if(people[i].lastname == 'undefined') { %>
+                    <h4>Name: <%= people[i].firstname%></h4>
+                    <% } else { %>
+                    <h4>Name: <%= people[i].firstname%>&nbsp;<%= people[i].lastname%></h4>
+                    <% } %>
+                    <p>Date of Birth: <%= people[i].dob%></p>
+                    <p>Age: <%= people[i].age%></p>
+                    <% if(user) { %>
+                    <form method="post">
+                        <input type="hidden" name="user" value="<%= user.id%>">
+                        <input type="hidden" name="profile" value="<%= people[i].user_id%>">
+                        <button type="submit" class="btn btn-success">Send Request</button>
+                    </form>
+                    <% } %>
+                </div>
+            </div>
+            <% } %>
+            <% } %>
+        </div>
+    </div>
+</div>

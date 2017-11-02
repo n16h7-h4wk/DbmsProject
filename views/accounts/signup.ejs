@@ -1,0 +1,56 @@
+<% layout('layout')%>
+<div class="container">
+    <h1>Sign Up</h1>
+    <hr>
+    <div class="row">
+        <div class="col-lg-6">
+            <% if(errors.length>0) {%>
+            <div class="alert alert-danger alert-dismissable">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                <%= errors %>
+            </div>
+            <%}%>
+            <form method="post">
+                <div class="form-group">
+                    <label for="name">Name : </label>
+                    <input class="form-control" name="name" required type="text">
+                </div>
+                <div class="form-group">
+                    <label for="username">Username : </label>
+                    <input class="form-control" name="username" required type="text">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password : </label>
+                    <input class="form-control" name="password" required type="password">
+                </div>
+                <div class="form-group">
+                    <label for="dob">Date of Birth : </label>
+                    <input class="form-control" required name="dob" type="date">
+                </div>
+                <div class="form-group">
+                    <label for="occupation">Occupation : </label>
+                    <input class="form-control" required name="occupation" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="occupation">District : </label>
+                    <input class="form-control" required name="district" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="occupation">City : </label>
+                    <input class="form-control" required name="city" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="occupation">State : </label>
+                    <input class="form-control" required name="state" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="occupation">Zip Code : </label>
+                    <input class="form-control" required name="zip" type="number">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">Sign up</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

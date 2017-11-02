@@ -1,0 +1,38 @@
+<% layout('layout') %>
+
+<link rel="stylesheet" href="/css/people.css">
+<script src="/js/people.js"></script>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <input type="search" class="form-control" id="input-search" placeholder="Search Friends..." >
+            <hr>
+        </div>
+        <div class="searchable-container">
+            <% for(let i=0;i<friends.length;i++) { %>
+            <div class="items col-xs-12 col-sm-6 col-md-6 col-lg-6 clearfix">
+                <div class="info-block block-info clearfix">
+                    <div class="square-box pull-left">
+                        <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+                    </div>
+                    <% if(friends[i].lastname == 'undefined') { %>
+                    <h4>Name: <%= friends[i].firstname%></h4>
+                    <% } else { %>
+                    <h4>Name: <%= friends[i].firstname%>&nbsp;<%= friends[i].lastname%></h4>
+                    <% } %>
+                    <p>Date of Birth: <%= friends[i].dob%></p>
+                    <p>Age: <%= friends[i].age%></p>
+                    <% if(friends[i].pending) { %>
+                    <form method="post">
+                        <input type="hidden" name="friend" value="<%= user.id%>">
+                        <input type="hidden" name="user" value="<%= friends[i].user_id%>">
+                        <button type="submit" class="btn btn-success">Accept</button>
+                    </form>
+                    <% } %>
+                </div>
+            </div>
+            <% } %>
+        </div>
+    </div>
+</div>
